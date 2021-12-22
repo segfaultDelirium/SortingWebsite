@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" >
+</head>
+<body>
+    <header>hello, choose type of sorting from navbar</header>
+    <nav>
+<!--        <a href="./index.html">home</a> |-->
+<!--        <a href="./bobbleSort.html">bobbleSort</a> |-->
+<!--        <a href="./quickSort.html">quickSort</a> |-->
+<!--        <a href="./insertSort.html">insertSort</a> |-->
+<!--        <a href="./mergeSort.html">mergeSort</a>-->
+    </nav>
+    <div class="slidecontainer">
+        <span>transitionTime [ms]: </span>
+        <span id="sleepTimeText"></span>
+        <input type="range" min="1" max="2000" value="20" class="slider" id="sleepTimeSlider">
+    </div>
+
+    <div class="slidecontainer">
+        <span>containers amount:</span>
+        <span id="containers-amount">10</span>
+        <input type="range" min="2" max="200" value="10" class="slider" id="containers-amount-slider">
+    </div>
+
+    <div class="sorting-controllers">
+        <div class="sorting-controller">
+            <span>bobble sort</span>
+            <button id="start-btn">start!</button>
+            <button id="reset-btn">reset</button>
+        </div>
+        <div class="sorting-controller">
+            <span>insert sort</span>
+        </div>
+    </div>
+
+
+
+    <div id="sorting-container">
+        <div  class="container" id="container1"></div>
+        <div  class="container" id="container2"></div>
+        <div  class="container" id="container3"></div>
+        <div  class="container" id="container4"></div>
+        <div  class="container" id="container5"></div>
+        <div  class="container" id="container6"></div>
+        <div  class="container" id="container7"></div>
+        <div  class="container" id="container8"></div>
+        <div  class="container" id="container9"></div>
+        <div  class="container" id="container10"></div>
+    </div>
+
+    <div id="status"></div>
+
+
+    <script src="bobbleSort.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

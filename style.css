@@ -1,0 +1,86 @@
+body{
+    background-color:rgb(194, 114, 159);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#sorting-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    align-self: center;
+    width: 100vw;
+    height: 600px;
+}
+
+.container{
+    width: 30px;
+    background:rgb(161, 100, 56);
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    margin-right: 1px;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+#start-btn{
+    display: block;
+    background-color: rgb(148, 253, 154);
+    padding: 10px;
+    width:min-content;
+    align-self: center;
+}
+
+#reset-btn{
+    display: block;
+    background-color: rgb(45, 168, 168);
+    padding: 10px;
+    width:min-content;
+    align-self: center;
+}
+
+.started{
+    background-color: rgb(255, 101, 101) !important;
+}
+
+#status{
+    display: block;
+    padding: 20px;
+    align-self: center;
+    color: greenyellow;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
+}
+
+header{
+    font-size: 2em;
+    align-self: center;
+}
+
+nav{
+    align-self: center;
+    margin: 10px;
+}
+
+.active1{
+    /* border-style: solid; */
+    background-color: grey;
+    /* border-width: 2px; */
+}
+
+.active2{
+    /* border-style: solid; */
+    background-color: white;
+    /* border-width: 2px; */
+}
+
+.sorting-controllers{
+    display: flex;
+    flex-direction: row;
+}
+
+.sorting-controller{
+    margin: 10px;
+}
