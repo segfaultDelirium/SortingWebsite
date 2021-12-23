@@ -21,6 +21,41 @@ containersAmountSlider.oninput = function () {
     setTransitionTime(containers, sleeptime / 2.0);
 };
 containersAmountText.innerHTML = containersAmountSlider.value;
+const startButton = document.querySelector("#start-btn");
+let stopFlag = false;
+startButton.addEventListener('click', () => {
+    const radioButtons = document.querySelectorAll('input[name="sort-type"]');
+    let selectedSort = radioButtons[0].value;
+    for (const rb of radioButtons) {
+        if (rb.checked) {
+            selectedSort = rb.value;
+            break;
+        }
+    }
+    const currentSortType = document.getElementById('selected-sorting-algorithm');
+    currentSortType.innerHTML = selectedSort;
+    if (!startButton.classList.contains('started')) {
+        startButton.innerText = "stop!";
+        startButton.classList.add('started');
+        let sleeptime = parseInt(sleepTimeText.innerHTML);
+        setTransitionTime(containers, sleeptime / 2.0);
+        switch (selectedSort) {
+            case "bubble":
+                bubbleSort(containers, sleeptime);
+                break;
+            case "insert":
+                insertSort(containers, sleeptime);
+                break;
+            case "quick":
+                quickSort(containers, sleeptime);
+                break;
+        }
+        updateHeight(containers);
+    }
+    else {
+        stopFlag = true;
+    }
+});
 let resetButton = document.querySelector("#reset-btn");
 resetButton.addEventListener('click', () => {
     setInitialHeight(containers);
@@ -96,4 +131,25 @@ function setTransitionTime(containers, transitionTime) {
     for (let i = 0; i < containers.length; i++) {
         containers[i].style.setProperty('transition', transitionTime / 1000.0 + 's cubic-bezier(0.39, 0.575, 0.565, 1)');
     }
+}
+function setProgress(isInProgress) {
+    const status = document.querySelector("#status");
+    if (isInProgress) {
+        status.innerText = "in progress";
+        status.style.color = 'red';
+        status.style.background = 'silver';
+    }
+    else {
+        status.innerText = "Done!";
+        status.style.color = 'yellowgreen';
+        status.style.background = 'black';
+    }
+}
+function isContainer1Smaller(container1, container2) {
+    let val1 = parseInt(container1.innerText);
+    let val2 = parseInt(container2.innerText);
+    // console.log(val1)
+    // console.log(val2)
+    // console.log()
+    return val1 < val2;
 }

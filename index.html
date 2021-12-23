@@ -11,33 +11,39 @@
     <header>hello, choose type of sorting from navbar</header>
     <nav>
 <!--        <a href="./index.html">home</a> |-->
-<!--        <a href="./bobbleSort.html">bobbleSort</a> |-->
+<!--        <a href="./bubbleSort.html">bubbleSort</a> |-->
 <!--        <a href="./quickSort.html">quickSort</a> |-->
 <!--        <a href="./insertSort.html">insertSort</a> |-->
 <!--        <a href="./mergeSort.html">mergeSort</a>-->
     </nav>
-    <div class="slidecontainer">
-        <span>transitionTime [ms]: </span>
-        <span id="sleepTimeText"></span>
-        <input type="range" min="1" max="2000" value="20" class="slider" id="sleepTimeSlider">
-    </div>
 
-    <div class="slidecontainer">
-        <span>containers amount:</span>
-        <span id="containers-amount">10</span>
-        <input type="range" min="2" max="200" value="10" class="slider" id="containers-amount-slider">
-    </div>
+    <div class="sorting-config">
+        <div class="slide-container">
+            <span>transitionTime [ms]: </span>
+            <span id="sleepTimeText"></span>
+            <input type="range" min="1" max="2000" value="20" class="slider" id="sleepTimeSlider">
+        </div>
 
-    <div class="sorting-controllers">
+        <div class="slide-container">
+            <span>containers amount:</span>
+            <span id="containers-amount">10</span>
+            <input type="range" min="2" max="200" value="10" class="slider" id="containers-amount-slider">
+        </div>
         <div class="sorting-controller">
-            <span>bobble sort</span>
             <button id="start-btn">start!</button>
             <button id="reset-btn">reset</button>
         </div>
-        <div class="sorting-controller">
-            <span>insert sort</span>
+        <div class="sortType-radios">
+            <input type="radio" id="bubble-sort" name="sort-type" value="bubble">
+            <label for="bubble-sort">Bubble sort</label><br>
+            <input type="radio" id="insert-sort" name="sort-type" value="insert">
+            <label for="insert-sort">Insert sort</label><br>
+            <input type="radio" id="quick-sort" name="sort-type" value="quick">
+            <label for="quick-sort">Quick sort</label>
         </div>
+        <div>selected sorting algorithm: <span id="selected-sorting-algorithm"></span> sort</div>
     </div>
+
 
 
 
@@ -57,8 +63,10 @@
     <div id="status"></div>
 
 
-    <script src="bobbleSort.js"></script>
+    <script src="bubbleSort.js"></script>
     <script src="script.js"></script>
+    <script src="insertSort.js"></script>
+    <script src="quickSort.js"></script>
 
 </body>
 </html>

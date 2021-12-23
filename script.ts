@@ -25,6 +25,37 @@ containersAmountSlider!.oninput = function(){
 }
 containersAmountText!.innerHTML = containersAmountSlider.value;
 
+type sortTypes = "bubble" | "insert" | "quick";
+
+const startButton = <HTMLButtonElement>document.querySelector("#start-btn");
+let stopFlag = false;
+startButton.addEventListener('click', () =>{
+    const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="sort-type"]');
+    let selectedSort: sortTypes = <sortTypes>radioButtons[0].value;
+    for(const rb of radioButtons){
+        if(rb.checked){
+            selectedSort = <sortTypes>rb.value;
+            break;
+        }
+    }
+    const currentSortType = document.getElementById('selected-sorting-algorithm');
+    currentSortType!.innerHTML = selectedSort;
+    if( !startButton.classList.contains('started')){
+        startButton.innerText = "stop!";
+        startButton.classList.add('started');
+        let sleeptime = parseInt(sleepTimeText!.innerHTML);
+        setTransitionTime(containers, sleeptime/2.0);
+        switch(selectedSort){
+            case "bubble": bubbleSort(containers, sleeptime); break;
+            case "insert": insertSort(containers, sleeptime); break;
+            case "quick": quickSort(containers, sleeptime); break;
+        }
+        updateHeight(containers);
+    }else{
+        stopFlag = true;
+    }
+});
+
 
 
 let resetButton = document.querySelector("#reset-btn");
@@ -113,3 +144,24 @@ function setTransitionTime(containers: HTMLDivElement[], transitionTime: number)
     }
 }
 
+function setProgress(isInProgress: boolean){
+    const status = <HTMLDivElement>document.querySelector("#status")
+    if(isInProgress){
+        status.innerText = "in progress";
+        status.style.color = 'red';
+        status.style.background = 'silver';
+    }else{
+        status.innerText = "Done!";
+        status.style.color = 'yellowgreen';
+        status.style.background = 'black';
+    }
+}
+
+function isContainer1Smaller(container1: HTMLDivElement, container2: HTMLDivElement){
+    let val1: number = parseInt(container1.innerText);
+    let val2: number = parseInt(container2.innerText);
+    // console.log(val1)
+    // console.log(val2)
+    // console.log()
+    return val1 < val2;
+}
