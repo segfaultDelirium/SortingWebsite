@@ -34,7 +34,6 @@ function _quicksort(containers, l, r, sleepTime) {
     return __awaiter(this, void 0, void 0, function* () {
         if (stopFlag)
             return;
-        let N = containers.length;
         if (l < r) {
             let i = yield splitArray(containers, l, r, sleepTime);
             yield _quicksort(containers, l, i - 1, sleepTime);
@@ -44,35 +43,44 @@ function _quicksort(containers, l, r, sleepTime) {
 }
 function splitArray(containers, l, r, sleepTime) {
     return __awaiter(this, void 0, void 0, function* () {
-        // console.log('in splitArray');
         let splitIndex = chooseSplitPoint(l, r);
-        // console.log(splitIndex)
-        // console.log(containers.length);
         let splitIndexValue = parseInt(containers[splitIndex].innerText);
-        // console.log('before swap')
-        // console.log(containers[splitIndex])
-        // console.log(containers.length)
-        // console.log(r);
-        // console.log(containers[r])
+        let c1 = containers[splitIndex];
+        let c2 = containers[r];
+        c1.classList.add('active1');
+        c2.classList.add('active2');
         swapInnerText(containers[splitIndex], containers[r]);
-        // console.log('after swap')
+        c1.classList.remove('active1');
+        c2.classList.remove('active2');
         yield sleep(sleepTime / 2.0);
         updateHeight(containers);
         yield sleep(sleepTime / 2.0);
         let currentIndex = l;
         for (let i = l; i < r; i++) {
             if (parseInt(containers[i].innerText) < splitIndexValue) {
+                let c1 = containers[i];
+                let c2 = containers[currentIndex];
+                c1.classList.add('active1');
+                c2.classList.add('active2');
                 swapInnerText(containers[i], containers[currentIndex]);
                 yield sleep(sleepTime / 2.0);
                 updateHeight(containers);
                 yield sleep(sleepTime / 2.0);
+                c1.classList.remove('active1');
+                c2.classList.remove('active2');
                 currentIndex += 1;
             }
         }
+        c1 = containers[currentIndex];
+        c2 = containers[r];
+        c1.classList.add('active1');
+        c2.classList.add('active2');
         swapInnerText(containers[currentIndex], containers[r]);
         yield sleep(sleepTime / 2.0);
         updateHeight(containers);
         yield sleep(sleepTime / 2.0);
+        c1.classList.remove('active1');
+        c2.classList.remove('active2');
         return currentIndex;
     });
 }
